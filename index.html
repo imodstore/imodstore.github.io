@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TARTIL MOD APP STORE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4361ee;
+            --dark-blue: #3a0ca3;
+            --light-blue: #4cc9f0;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            --gradient-purple: linear-gradient(135deg, #7209b7, #3a0ca3);
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --black: #212529;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ultra Premium Header */
+        header {
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: var(--white);
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(67,97,238,0.1) 0%, transparent 30%);
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #a1c4fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #4cc9f0, transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { width: 0; opacity: 0; }
+            50% { width: 100px; opacity: 1; }
+            100% { width: 0; opacity: 0; left: 100%; }
+        }
+
+        .header-sub {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-top: 0.5rem;
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 800px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            width: 100%;
+        }
+
+        .search-bar:focus-within {
+            border-color: var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 1rem;
+            background: transparent;
+            width: 100%;
+        }
+
+        .search-bar i {
+            color: var(--dark-gray);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Apps Grid */
+        .apps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .feature-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0 2rem;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-tab {
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            background: var(--white);
+            border: 1px solid var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .feature-tab.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .feature-tab:hover:not(.active) {
+            background: var(--off-white);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .app-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .app-poster-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            background-color: var(--gray);
+            overflow: hidden;
+        }
+
+        .app-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .app-card:hover .app-poster {
+            transform: scale(1.05);
+        }
+
+        .app-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        .app-category {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .app-description {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .app-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .trending-badge {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+        }
+
+        .quick-download-btn {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(10px);
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .app-card:hover .quick-download-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quick-download-btn:hover {
+            background: var(--dark-blue);
+            transform: scale(1.1);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 0.5rem;
+        }
+
+        .pagination button {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.2);
+        }
+
+        .pagination button:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .pagination button.active {
+            background-color: var(--dark-blue);
+            font-weight: bold;
+        }
+
+        .pagination button:disabled {
+            background-color: #adb5bd;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-info {
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        /* Futuristic Footer */
+        footer {
+            background: linear-gradient(135deg, #3a0ca3, #4361ee);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: borderGlow 3s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-subtext {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            animation: modalOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            position: relative;
+        }
+
+        @keyframes modalOpen {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn i {
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .modal-poster {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 auto 1.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        .modal-category {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Passkey Modal */
+        .passkey-modal .modal-body {
+            padding: 2rem;
+        }
+
+        .passkey-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .passkey-subtitle {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .passkey-input {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid var(--gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .passkey-input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+
+        .submit-passkey {
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-passkey:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .payment-instruction {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            background-color: var(--off-white);
+            padding: 1rem;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+
+        .payment-instruction strong {
+            color: var(--primary-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-sub {
+                font-size: 1rem;
+            }
+            
+            .apps-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-container {
+                padding: 0 1rem;
+            }
+
+            .modal-poster {
+                width: 80px;
+                height: 80px;
+            }
+
+            .modal-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ultra Premium Header -->
+    <header class="animate__animated animate__fadeIn">
+        <div class="floating-icons" id="floatingIcons"></div>
+        <div class="header-content">
+            <h1>TARTIL MOD APP STORE</h1>
+            <p class="header-sub">Premium Mods • Exclusive Features</p>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-bar animate__animated animate__fadeIn animate__delay-1s">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search mod apps...">
+        </div>
+    </div>
+
+    <div class="apps-container">
+        <div class="feature-tabs">
+            <div class="feature-tab active" data-filter="all">All Mods</div>
+            <div class="feature-tab" data-filter="trending">Trending</div>
+        </div>
+
+        <div id="appsGrid" class="apps-grid"></div>
+        
+        <div class="pagination">
+            <button id="prevPage" disabled>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="page-info" id="pageInfo">Page 1 of 1</span>
+            <button id="nextPage" disabled>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Futuristic Footer -->
+    <footer>
+        <div class="footer-bg"></div>
+        <div class="footer-content">
+            <p class="footer-text">Site owner: Tartil Hossain</p>
+            <p class="footer-subtext">© 2024 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="modal-body">
+                <img id="modalAppPoster" src="" alt="App Poster" class="modal-poster">
+                <h2 class="modal-title" id="modalAppTitle"></h2>
+                <span class="modal-category" id="modalAppCategory"></span>
+                <p class="modal-description" id="modalAppDescription"></p>
+                
+                <a id="modalDownloadLink" href="#" target="_blank" class="download-btn">
+                    <i class="fas fa-download"></i> Download Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Passkey Modal -->
+    <div id="passkeyModal" class="modal passkey-modal" style="display: flex;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2 class="passkey-title">Enter Passkey</h2>
+                <p class="passkey-subtitle">Please enter the passkey to access the mod app store</p>
+                
+                <input type="password" id="passkeyInput" class="passkey-input" placeholder="Enter passkey">
+                <button id="submitPasskey" class="submit-passkey">Submit</button>
+                
+                <div class="payment-instruction">
+                    <strong>Payment required:</strong> Send payment to <strong>01715783544 (TARTIL)</strong> via bKash/Nagad to receive your passkey.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced App Data with new features
+        const appsData = [
+            {
+                id: 2,
+                title: "Truecaller Premium Mod",
+                category: "Communication",
+                poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD0lJb5nR_P78H-KY_9dijC59W14Xdvj8v8w&s",
+                downloadLink: "https://dl.gamedva.top/App/Truecaller-v15.18.6-mod-GameDVA.com.apk",
+                description: "Advanced caller ID with premium features unlocked",
+                badges: ["trending"]
+            },
+            {
+                id: 1,
+                title: "Spotify Premium Mod",
+                category: "Music",
+                poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWmecNDAjiOKtCmSMtziuaWx92c5DvttjxQhwEAScyPOi_7mlrgGODbojU&s=10",
+                downloadLink: "https://dl.gamedva.top/App/Spotify-v9.0.56.347-mod-GameDVA.com.apk",
+                description: "Unlimited music streaming with premium features",
+                badges: ["trending"]
+            }
+        ];
+
+        // DOM Elements
+        const appsGrid = document.getElementById('appsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const prevPageBtn = document.getElementById('prevPage');
+        const nextPageBtn = document.getElementById('nextPage');
+        const pageInfo = document.getElementById('pageInfo');
+        const downloadModal = document.getElementById('downloadModal');
+        const passkeyModal = document.getElementById('passkeyModal');
+        const passkeyInput = document.getElementById('passkeyInput');
+        const submitPasskey = document.getElementById('submitPasskey');
+        const floatingIcons = document.getElementById('floatingIcons');
+
+        // Create floating app icons
+        function createFloatingIcons() {
+            const icons = ['mobile', 'download', 'cloud', 'gamepad', 'music', 'video'];
+            for (let i = 0; i < 12; i++) {
+                const icon = document.createElement('i');
+                icon.classList.add('fas', `fa-${icons[i % icons.length]}`, 'floating-icon');
+                
+                // Random properties
+                const size = Math.random() * 20 + 10;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 15 + 10;
+                const opacity = Math.random() * 0.3 + 0.1;
+                
+                icon.style.fontSize = `${size}px`;
+                icon.style.left = `${posX}%`;
+                icon.style.animationDelay = `${delay}s`;
+                icon.style.animationDuration = `${duration}s`;
+                icon.style.opacity = opacity;
+                icon.style.bottom = `-${size}px`;
+                
+                floatingIcons.appendChild(icon);
+            }
+        }
+
+        // Initialize floating icons
+        createFloatingIcons();
+
+        // Pagination Variables
+        let currentPage = 1;
+        const appsPerPage = 6;
+        let filteredApps = [...appsData];
+
+        // Check if access is already granted
+        const hasAccess = localStorage.getItem('appStoreAccess') === 'granted';
+
+        if (!hasAccess) {
+            passkeyModal.style.display = 'flex';
+        } else {
+            renderApps();
+        }
+
+        // Passkey Verification
+        submitPasskey.addEventListener('click', () => {
+            const passkey = passkeyInput.value.trim();
+            if (passkey === "TAOJ7") {
+                localStorage.setItem('appStoreAccess', 'granted');
+                passkeyModal.style.display = 'none';
+                renderApps();
+            } else {
+                window.location.href = "https://forms.gle/ucMoW34smF7KNk2R7";
+            }
+        });
+
+        // Search Functionality
+        searchInput.addEventListener('input', () => {
+            currentPage = 1;
+            filterApps();
+            renderApps();
+        });
+
+        // Pagination Controls
+        prevPageBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderApps();
+            }
+        });
+
+        nextPageBtn.addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredApps.length / appsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderApps();
+            }
+        });
+
+        // Filter Apps based on search
+        function filterApps() {
+            const searchTerm = searchInput.value.toLowerCase();
+            if (!searchTerm) {
+                filteredApps = [...appsData];
+                return;
+            }
+
+            filteredApps = appsData.filter(app => 
+                app.title.toLowerCase().includes(searchTerm) ||
+                app.description.toLowerCase().includes(searchTerm) ||
+                app.category.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        // Enhanced renderApps function
+        function renderApps() {
+            // Sort by ID (higher IDs first)
+            const sortedApps = [...filteredApps].sort((a, b) => b.id - a.id);
+            
+            // Calculate pagination
+            const totalPages = Math.ceil(sortedApps.length / appsPerPage);
+            const startIndex = (currentPage - 1) * appsPerPage;
+            const paginatedApps = sortedApps.slice(startIndex, startIndex + appsPerPage);
+
+            // Update pagination controls
+            prevPageBtn.disabled = currentPage === 1;
+            nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
+            pageInfo.textContent = totalPages > 0 ? `Page ${currentPage} of ${totalPages}` : 'No apps found';
+
+            // Clear the grid
+            appsGrid.innerHTML = '';
+
+            // Add apps to the grid
+            paginatedApps.forEach((app, index) => {
+                const appCard = document.createElement('div');
+                appCard.className = 'app-card animate__animated animate__fadeIn';
+                appCard.style.animationDelay = `${index * 0.1}s`;
+                
+                // Generate badges
+                const badgesHTML = app.badges.map(badge => 
+                    `<span class="app-badge ${badge}-badge">${badge.charAt(0).toUpperCase() + badge.slice(1)}</span>`
+                ).join('');
+
+                appCard.innerHTML = `
+                    ${badgesHTML}
+                    <div class="app-poster-container">
+                        <img src="${app.poster}" alt="${app.title}" class="app-poster">
+                    </div>
+                    <div class="app-info">
+                        <h3 class="app-title">${app.title}</h3>
+                        <span class="app-category">${app.category}</span>
+                        <div class="app-description">${app.description}</div>
+                    </div>
+                    <div class="quick-download-btn" data-link="${app.downloadLink}">
+                        <i class="fas fa-download"></i>
+                    </div>
+                `;
+
+                appCard.addEventListener('click', (e) => {
+                    if (!e.target.closest('.quick-download-btn')) {
+                        openDownloadModal(app);
+                    }
+                });
+                
+                appsGrid.appendChild(appCard);
+            });
+
+            // Add quick download functionality
+            document.querySelectorAll('.quick-download-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    window.open(btn.dataset.link, '_blank');
+                });
+            });
+        }
+
+        // Add filter functionality
+        document.querySelectorAll('.feature-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelector('.feature-tab.active').classList.remove('active');
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.filter;
+                if (filter === 'all') {
+                    filteredApps = [...appsData];
+                } else {
+                    filteredApps = appsData.filter(app => 
+                        app.badges.includes(filter)
+                    );
+                }
+                
+                currentPage = 1;
+                renderApps();
+            });
+        });
+
+        // Download Modal Functions
+        function openDownloadModal(app) {
+            document.getElementById('modalAppPoster').src = app.poster;
+            document.getElementById('modalAppTitle').textContent = app.title;
+            document.getElementById('modalAppCategory').textContent = app.category;
+            document.getElementById('modalAppDescription').textContent = app.description;
+            document.getElementById('modalDownloadLink').href = app.downloadLink;
+            
+            downloadModal.style.display = 'flex';
+        }
+
+        // Close modal when clicking X
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            downloadModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === downloadModal) {
+                downloadModal.style.display = 'none';
+            }
+            if (e.target === passkeyModal && hasAccess) {
+                passkeyModal.style.display = 'none';
+            }
+        });
+
+        // Allow Enter key to submit passkey
+        passkeyInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitPasskey.click();
+            }
+        });
+
+        // Initial render
+        renderApps();
+    </script>
+</body>
+</html>
